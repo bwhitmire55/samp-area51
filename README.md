@@ -26,38 +26,38 @@ And finally, maintaining your version number`:
 Happy Pawning!
 -->
 
-## Installation
+## samp-area51
 
-Simply install to your project:
+samp-area51 is a replica of the once very popular 'The Area 51 Server'. Once a part of the Official Server List, the premise of the server was simple; a standard TDM script where Area 51 base personnel try to prevent a group of individual from entering the base. This remake will focus on replicating the core mechanics of the original gamemode script, while flushing out some of the lesser touched parts. These would include a more objective style play, or potentially a story, to make better sense of the surrounding madness; updated visual asthetics for a more soothing appearance; and extending base systems found commonly among all gamemode server scripts.
 
-```bash
-sampctl package install bwhitmire55/samp-area51
-```
+Base idea credits, and the original authors of the script, go to [RP]Jolteon/Redirect_Left and [RP]Ettans. 
 
-Include in your code and begin using the library:
+## Features
 
-```pawn
-#include <samp-area51>
-```
+* Two base gamemodes (Break-In and Break-Out)
+* Player Rank system; progressing through the ranks will be access to various capabilities in-game
+* Achievement system
+* Administrator system
+* Team-balancing system
+* Anti C-Bug System
+* Anti-Cheat System
 
-## Usage
+## Classes
 
-<!--
-Write your code documentation or examples here. If your library is documented in
-the source code, direct users there. If not, list your API and describe it well
-in this section. If your library is passive and has no API, simply omit this
-section.
--->
+* Defenders
+    * Army [M4, MP5, Grenade]
+    * FBI [MP5, Desert Eagle, Nightstick]
+    * Scientist [Desert Eagle, Rocket Launcher, Knife]
+    * Medic [Shotgun, Colt45, Fire Extinguisher]
+* Attackers
+    * Thug [AK47, Desert Eagle, Baseball Bat]
+    * Pyromaniac [M4, Spaz Shotgun, Flamethrower]
+    * Sniper [Sniper Rifle, Silenced Pistol, Knife]
+    * Medic [Shotgun, Colt45, Fire Extinguisher]
 
-## Testing
+## Ranks
 
-<!--
-Depending on whether your package is tested via in-game "demo tests" or
-y_testing unit-tests, you should indicate to readers what to expect below here.
--->
-
-To test, simply run the package:
-
-```bash
-sampctl package run
-```
+* Rank 1 [x kills] -> 
+* Rank 2 [x kills] ->
+* Rank 3 [x kills] -> 
+* Rank 4 [x kills] -> Drive the Seasparrow or Hydra
