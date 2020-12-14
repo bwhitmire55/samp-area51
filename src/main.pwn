@@ -21,12 +21,22 @@
 #define SERVER_WEBURL           "www.sa-mp.com"
 
 // --- Include Modules --- //
+// - Game - //
+#include "game/classes.p"
 // - Tools - //
 #include "tools/coordSaver.p"
 
 main() {}
 
 public OnGameModeInit() {
+
+    // ----- TEMP TEST CODE START ----- //
+
+    AddClass(287, 213.693, 1902.717, 17.640, 5.548); // ARMY
+    AddClass(286, 214.584,1822.596,6.414,271.861); // FBI
+    AddClass(70, 351.283,2537.139,16.733,214.739); // SCIENTIST
+
+    // ----- TEMP TEST CODE END ----- //
 
     // set client rules
     SendRconCommand("hostname "SERVER_HOSTNAME);
