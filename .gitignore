@@ -50,5 +50,6 @@ samp.ban
 *.sublime-workspace
 
 # Extra locations until necesssary
+gamemodes/
 filterscripts/
 scriptfiles/

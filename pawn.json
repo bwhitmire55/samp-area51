@@ -1,7 +1,7 @@
 {
 	"user": "bwhitmire55",
 	"repo": "samp-area51",
-	"entry": "gamemodes/src/main.pwn",
+	"entry": "src/main.pwn",
 	"output": "gamemodes/main.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib"
