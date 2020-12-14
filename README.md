@@ -61,3 +61,7 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 * Rank 2 [x kills] ->
 * Rank 3 [x kills] -> 
 * Rank 4 [x kills] -> Drive the Seasparrow or Hydra
+
+## Dependencies
+
+ZCMD (ZeeX)

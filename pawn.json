@@ -4,7 +4,14 @@
 	"entry": "src/main.pwn",
 	"output": "gamemodes/main.amx",
 	"dependencies": [
-		"sampctl/samp-stdlib"
+		"sampctl/samp-stdlib",
+		"Southclaws/zcmd"
 	],
-	"local": true
+	"local": true,
+	"runtime": {
+		"version": "0.3.7",
+		"mode": "server",
+		"rcon_password": "password",
+		"port": 7777
+	}
 }
