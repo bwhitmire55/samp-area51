@@ -2,6 +2,12 @@
 // classes.p
 //
 
+/**
+    TODO:
+        - Test system integrity when dynamically adding and deleting classes
+        - Add macro to allow independent class selection views
+ */
+
 #if defined _classes_included
     #endinput
 #endif
@@ -23,6 +29,7 @@ enum eClass {
     Float: eClass_A,
     eClass_Interior,
     eClass_World,
+    eClass_Team,
     eClass_Weapon[MAX_CLASS_WEAPONS],
     eClass_Ammo[MAX_CLASS_WEAPONS]
 };
@@ -41,25 +48,28 @@ stock AddClass(skin, Float: x, Float: y, Float: z, Float: a) {
         gClassData[slot][eClass_Y] = y;
         gClassData[slot][eClass_Z] = z;
         gClassData[slot][eClass_A] = a;
+
+        // specifically set class to NO_TEAM, to avoid potential overwrite
+        gClassData[slot][eClass_Team] = NO_TEAM;
         return slot;
     }
     return -1;
 }
 
 stock SetClassInterior(id, interior) {
-    if((0 < id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
         gClassData[id][eClass_Interior] = interior;
     }
 }
 
 stock SetClassWorld(id, world) {
-    if((0 < id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
         gClassData[id][eClass_World] = world;
     }
 }
 
 stock SetClassPosition(id, Float: x, Float: y, Float: z, Float: a) {
-    if((0 < id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
         gClassData[id][eClass_X] = x;
         gClassData[id][eClass_Y] = y;
         gClassData[id][eClass_Z] = z;
@@ -67,25 +77,33 @@ stock SetClassPosition(id, Float: x, Float: y, Float: z, Float: a) {
     }
 }
 
+stock SetClassTeam(id, teamid) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+        gClassData[id][eClass_Team] = teamid;
+    }
+}
+
 stock SetClassWeapon(id, weapon, ammo) {
-    if((0 < id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
         for(new i = 0; i < MAX_CLASS_WEAPONS; i++) {
             if(gClassData[id][eClass_Weapon][i] == 0) {
                 gClassData[id][eClass_Weapon][i] = weapon;
                 gClassData[id][eClass_Ammo][i] = ammo;
+                break;
             }
         }
     }
 }
 
-stock DestroyClass(id) {
-    if((0 < id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+stock DeleteClass(id) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
         gClassData[id][eClass_Created] = false;
         gClassData[id][eClass_Skin] = 0;
         gClassData[id][eClass_X] = 0.0;
         gClassData[id][eClass_Y] = 0.0;
         gClassData[id][eClass_Z] = 0.0;
         gClassData[id][eClass_A] = 0.0;
+        gClassData[id][eClass_Team] = TEAM_NONE;
         gClassData[id][eClass_Interior] = 0;
         gClassData[id][eClass_World] = 0;
 
@@ -94,6 +112,14 @@ stock DestroyClass(id) {
             gClassData[i][eClass_Ammo][i] = 0;
         }
     }
+}
+
+stock GetPlayerClassID(playerid) {
+    return gPlayerClassIter[playerid];
+}
+
+stock SetPlayerClassID(playerid, classid) {
+    gPlayerClassIter[playerid] = classid;
 }
 
 static stock GetEmptySlot() {
@@ -142,7 +168,6 @@ static stock GetPreviousClass(iter) {
 }
 
 static stock UpdateClassDisplay(playerid) {
-    printf("Iter: %i, SkinID: %i", gPlayerClassIter[playerid], gClassData[gPlayerClassIter[playerid]][eClass_Skin]);
     SetPlayerSkin(playerid, gClassData[gPlayerClassIter[playerid]][eClass_Skin]);
 }
 
@@ -226,6 +251,14 @@ public OnPlayerSpawn(playerid) {
         SetPlayerFacingAngle(playerid, gClassData[gPlayerClassIter[playerid]][eClass_A]);
         SetPlayerInterior(playerid, gClassData[gPlayerClassIter[playerid]][eClass_Interior]);
         SetPlayerVirtualWorld(playerid, gClassData[gPlayerClassIter[playerid]][eClass_World]);
+        SetPlayerTeam(playerid, gClassData[gPlayerClassIter[playerid]][eClass_Team]);
+
+        for(new i = 0; i < MAX_CLASS_WEAPONS; i++) {
+            GivePlayerWeapon(playerid, 
+                gClassData[gPlayerClassIter[playerid]][eClass_Weapon][i],
+                gClassData[gPlayerClassIter[playerid]][eClass_Ammo][i]
+            );
+        }
     }
     return 1;
 }

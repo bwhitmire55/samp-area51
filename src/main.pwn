@@ -33,12 +33,36 @@ public OnGameModeInit() {
 
     // ----- TEMP TEST CODE START ----- //
 
-    AddClass(287, 213.693, 1902.717, 17.640, 5.548); // ARMY
-    AddClass(286, 214.584,1822.596,6.414,271.861); // FBI
-    AddClass(70, 351.283,2537.139,16.733,214.739); // SCIENTIST
+    new class_Army = AddClass(287, 213.693, 1902.717, 17.640, 5.548); // ARMY
+    SetClassWeapon(class_Army, WEAPON_M4, 300);
+    SetClassWeapon(class_Army, WEAPON_MP5, 200);
+    SetClassWeapon(class_Army, WEAPON_GRENADE, 5);
 
-    //AddPlayerClass(287, 213.693, 1902.717, 17.640, 5.548, 0, 0, 0, 0, 0, 0);
-    //AddPlayerClass(286, 214.584,1822.596,6.414,271.861, 0, 0, 0, 0, 0, 0);
+    new class_FBI = AddClass(286, 214.584,1822.596,6.414,271.861); // FBI
+    SetClassWeapon(class_FBI, WEAPON_MP5, 300);
+    SetClassWeapon(class_FBI, WEAPON_DEAGLE, 60);
+    SetClassWeapon(class_FBI, WEAPON_NITESTICK, 1);
+
+    new class_Scientist = AddClass(70, 351.283,2537.139,16.733,214.739); // SCIENTIST
+    SetClassWeapon(class_Scientist, WEAPON_DEAGLE, 60);
+    SetClassWeapon(class_Scientist, WEAPON_ROCKETLAUNCHER, 5);
+    SetClassWeapon(class_Scientist, WEAPON_KNIFE, 1);
+
+    new class_Thug = AddClass(121, -379.358,2201.278,42.356,247.009); // THUG
+    SetClassWeapon(class_Thug, WEAPON_AK47, 300);
+    SetClassWeapon(class_Thug, WEAPON_DEAGLE, 60);
+    SetClassWeapon(class_Thug, WEAPON_BAT, 1);
+
+    new class_Pyro = AddClass(206, -366.686,2202.583,42.484,191.235); // PYRO
+    SetClassWeapon(class_Pyro, WEAPON_M4, 300);
+    SetClassWeapon(class_Pyro, WEAPON_SHOTGSPA, 70);
+    SetClassWeapon(class_Pyro, WEAPON_FLAMETHROWER, 50);
+
+    new class_Sniper = AddClass(122, 315.713,973.972,1961.442,357.029); // SNIPER
+    SetClassInterior(class_Sniper, 9);
+    SetClassWeapon(class_Sniper, WEAPON_SNIPER, 100);
+    SetClassWeapon(class_Sniper, WEAPON_SILENCED, 100);
+    SetClassWeapon(class_Sniper, WEAPON_KNIFE, 1);
 
     // ----- TEMP TEST CODE END ----- //
 
