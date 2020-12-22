@@ -17,3 +17,7 @@ public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:INTERMISSION> {
 public OnPlayerSpawn(playerid) <CURRENT_MODE:INTERMISSION> {
     return 1;
 }
+
+public OnPlayerEnterCheckpoint(playerid) <CURRENT_MODE:INTERMISSION> {
+    return 1;
+}

@@ -17,3 +17,7 @@ public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:BREAK_OUT> {
 public OnPlayerSpawn(playerid) <CURRENT_MODE:BREAK_OUT> {
     return 1;
 }
+
+public OnPlayerEnterCheckpoint(playerid) <CURRENT_MODE:BREAK_OUT> {
+    return 1;
+}

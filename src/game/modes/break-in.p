@@ -2,16 +2,17 @@
 // break-in.p
 //
 
-static const TEAM_DEFENSE = 1;
-static const TEAM_ATTACK = 2;
+#define TEAM_DEFENSE    (1)
+#define TEAM_ATTACK     (2)
 
-static const CP_BREACH = 1;
-static const CP_DROP = 2;
-static const CP_ENTER1 = 3;
-static const CP_ENTER2 = 4;
-static const CP_ENTER3 = 5;
-static const CP_ENTER4 = 6;
-static const CP_FINAL = 7;
+#define CP_NONE         (0)
+#define CP_BREACH       (1) 
+#define CP_DROP         (2)
+#define CP_ENTER1       (3)
+#define CP_ENTER2       (4)
+#define CP_ENTER3       (5)
+#define CP_ENTER4       (6)
+#define CP_FINAL        (7)
 
 static gClass_Army;
 static gClass_FBI;
@@ -21,6 +22,8 @@ static gClass_Pyro;
 static gClass_Sniper;
 
 static gParachutePickups[2];
+
+static gPlayerCPStatus[MAX_PLAYERS];
 
 public OnModeInit() <CURRENT_MODE:BREAK_IN> {
     gClass_Army = AddClass(287, 213.693, 1902.717, 17.640, 5.548); // ARMY
@@ -105,11 +108,68 @@ public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:BREAK_IN> {
 public OnPlayerSpawn(playerid) <CURRENT_MODE:BREAK_IN> {
     new class = GetPlayerClassID(playerid);
     if(class == gClass_Thug) {
+        gPlayerCPStatus[playerid] = CP_BREACH;
         SetPlayerCheckpoint(playerid, 211.587,1811.114,21.867, 5.0);
     } else if(class == gClass_Pyro) {
+        gPlayerCPStatus[playerid] = CP_ENTER1;
         SetPlayerCheckpoint(playerid, 262.685,1889.647,8.078, 5.0);
     } else if(class == gClass_Sniper) {
+        gPlayerCPStatus[playerid] = CP_DROP;
         SetPlayerCheckpoint(playerid, 315.842,1034.204,1945.834, 5.0);
+    } else {
+        gPlayerCPStatus[playerid] = CP_NONE;
     }
     return 1;
 }
+
+public OnPlayerEnterCheckpoint(playerid) <CURRENT_MODE:BREAK_IN> {
+    switch(gPlayerCPStatus[playerid]) {
+        case CP_DROP: {
+            SetPlayerInterior(playerid, 0);
+            SetPlayerPos(playerid, 262.685,1889.647,308.078);
+            SetPlayerCheckpoint(playerid, 262.685,1889.647,8.078, 5.0);
+            gPlayerCPStatus[playerid] = CP_ENTER1;
+        }
+        case CP_BREACH: {
+            // -- Breach gate here -- //
+            SetPlayerCheckpoint(playerid, 262.685,1889.647,8.078, 5.0);
+            gPlayerCPStatus[playerid] = CP_ENTER1;
+        }
+        case CP_ENTER1: {
+            SetPlayerCheckpoint(playerid, 274.382,1878.734,-1.304, 5.0);
+            gPlayerCPStatus[playerid] = CP_ENTER2;
+        }
+        case CP_ENTER2: {
+            SetPlayerCheckpoint(playerid, 262.969,1889.272,-10.695, 5.0);
+            gPlayerCPStatus[playerid] = CP_ENTER3;
+        }
+        case CP_ENTER3: {
+            SetPlayerCheckpoint(playerid, 274.331,1878.698,-20.078, 5.0);
+            gPlayerCPStatus[playerid] = CP_ENTER4;
+        }
+        case CP_ENTER4: {
+            SetPlayerCheckpoint(playerid, 268.642,1884.051,-30.093, 5.0);
+            gPlayerCPStatus[playerid] = CP_FINAL;
+        }
+        case CP_FINAL: {
+            // -- Enter counter code here -- //
+            // -- Enter game-ending logic here -- //
+            DisablePlayerCheckpoint(playerid);
+            gPlayerCPStatus[playerid] = CP_NONE;
+        }
+    }
+    return 1;
+}
+
+// undef mode script symbols
+#undef TEAM_DEFENSE 
+#undef TEAM_ATTACK
+
+#undef CP_NONE
+#undef CP_BREACH 
+#undef CP_DROP
+#undef CP_ENTER1
+#undef CP_ENTER2 
+#undef CP_ENTER3
+#undef CP_ENTER4
+#undef CP_FINAL
