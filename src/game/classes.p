@@ -260,8 +260,16 @@ public OnPlayerSpawn(playerid) {
             );
         }
     }
-    return 1;
+    return CallLocalFunction("class_OnPlayerSpawn", "i", playerid);
 }
+
+#if defined _ALS_OnPlayerSpawn
+	#undef OnPlayerSpawn
+#else
+	#define _ALS_OnPlayerSpawn
+#endif
+#define OnPlayerSpawn class_OnPlayerSpawn
+forward class_OnPlayerSpawn(playerid);
 
 public OnPlayerDisconnect(playerid, reason) {
 

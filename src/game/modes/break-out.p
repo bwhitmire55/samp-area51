@@ -13,3 +13,7 @@ public OnModeExit() <CURRENT_MODE:BREAK_OUT> {
 public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:BREAK_OUT> {
     return 1;
 }
+
+public OnPlayerSpawn(playerid) <CURRENT_MODE:BREAK_OUT> {
+    return 1;
+}

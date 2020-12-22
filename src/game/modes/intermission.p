@@ -13,3 +13,7 @@ public OnModeExit() <CURRENT_MODE:INTERMISSION> {
 public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:INTERMISSION> {
     return 1;
 }
+
+public OnPlayerSpawn(playerid) <CURRENT_MODE:INTERMISSION> {
+    return 1;
+}

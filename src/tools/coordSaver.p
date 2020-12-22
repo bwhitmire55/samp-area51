@@ -20,14 +20,14 @@ COMMAND:savepos(playerid, params[]) {
         if(IsPlayerInAnyVehicle(playerid)) {
             GetVehiclePos(GetPlayerVehicleID(playerid), x, y, z);
             GetVehicleZAngle(GetPlayerVehicleID(playerid), a);
-            format(buffer, sizeof(buffer), "CreateVehicle(%i,%0.3f,%0.3f,%0.3f,%0.3f,-1,-1); %s",
+            format(buffer, sizeof(buffer), "CreateVehicle(%i,%0.3f,%0.3f,%0.3f,%0.3f,-1,-1,-1); %s",
                 GetVehicleModel(GetPlayerVehicleID(playerid)),
                 x, y, z, a, params
             );
         } else {
             GetPlayerPos(playerid, x, y, z);
             GetPlayerFacingAngle(playerid, a);
-            format(buffer, sizeof(buffer), "AddPlayerClass(%i,%0.3f,%0.3f,%0.3f,%0.3f,0,0,0,0,0,0); %s",
+            format(buffer, sizeof(buffer), "AddPlayerClass(%i,%0.3f,%0.3f,%0.3f,%0.3f,0,0,0,0,0,0); // %s",
                 GetPlayerSkin(playerid), x, y, z, a, params
             );
         }
