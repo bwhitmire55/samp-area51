@@ -2,6 +2,16 @@
 // break-in.p
 //
 
+/**
+    TO-DO:
+        -> Add mode-timer, along with default win for defenders
+        -> Add gate with gate-breaching code
+        -> Add barriers to block the entrance through the vents
+        -> Display messages for break-ins, and a totals counter
+ */
+
+#define BREAK_IN_GOAL   (1)
+
 #define TEAM_DEFENSE    (1)
 #define TEAM_ATTACK     (2)
 
@@ -24,6 +34,8 @@ static gClass_Sniper;
 static gParachutePickups[2];
 
 static gPlayerCPStatus[MAX_PLAYERS];
+
+static gBreakInCounter;
 
 public OnModeInit() <CURRENT_MODE:BREAK_IN> {
     gClass_Army = AddClass(287, 213.693, 1902.717, 17.640, 5.548); // ARMY
@@ -94,6 +106,12 @@ public OnModeExit() <CURRENT_MODE:BREAK_IN> {
 
     DestroyPickup(gParachutePickups[0]);
     DestroyPickup(gParachutePickups[1]);
+
+    for(new i = 0; i < MAX_VEHICLES; i++) {
+        DestroyVehicle(i);
+    }
+
+    gBreakInCounter = 0;
     return 1;
 }
 
@@ -152,16 +170,21 @@ public OnPlayerEnterCheckpoint(playerid) <CURRENT_MODE:BREAK_IN> {
             gPlayerCPStatus[playerid] = CP_FINAL;
         }
         case CP_FINAL: {
-            // -- Enter counter code here -- //
-            // -- Enter game-ending logic here -- //
             DisablePlayerCheckpoint(playerid);
             gPlayerCPStatus[playerid] = CP_NONE;
+
+            gBreakInCounter++;
+            if(gBreakInCounter == BREAK_IN_GOAL) {
+                EndMode();
+            }
         }
     }
     return 1;
 }
 
 // undef mode script symbols
+#undef BREAK_IN_GOAL
+
 #undef TEAM_DEFENSE 
 #undef TEAM_ATTACK
 

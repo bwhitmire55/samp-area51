@@ -12,10 +12,15 @@ static const gModeList[] = {
     "Break-Out"
 };
 
+static gCurrentMode;    // Does not update for intermission mode
+
 forward OnModeInit();
 forward OnModeExit();
 
 LoadMode(modeid) {
+
+    if(modeid != MODE_INTERMISSION)
+        gCurrentMode = modeid;
 
     new buffer[40];
     format(buffer, sizeof(buffer), "gamemodetext %s", gModeList[modeid]);
@@ -33,4 +38,33 @@ LoadMode(modeid) {
     }
 
     CallLocalFunction("OnModeInit", "", "");
+}
+
+EndMode(bool: isIntermission = false) {
+    CallLocalFunction("OnModeExit", "", "");
+
+    // Respawn all players to class selection so the next mode
+    // can handle them properly
+    for(new i = 0; i < MAX_PLAYERS; i++) {
+        TogglePlayerSpectating(i, true);
+        ForceClassSelection(i);
+        TogglePlayerSpectating(i, false);
+    }
+
+    // delay load mode so the caller of this function can properly return
+    if(!isIntermission)
+        SetTimerEx("DelayLoadMode", 100, false, "i", MODE_INTERMISSION);
+    else {
+        gCurrentMode++;
+        if(gCurrentMode == sizeof(gModeList)) {
+            gCurrentMode = MODE_BREAK_IN;
+        }
+        SetTimerEx("DelayLoadMode", 100, false, "i", gCurrentMode);
+    }
+}
+
+forward DelayLoadMode(modeid);
+public DelayLoadMode(modeid) {
+    LoadMode(modeid);
+    return 1;
 }

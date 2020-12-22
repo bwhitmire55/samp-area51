@@ -3,6 +3,7 @@
 //
 
 public OnModeInit() <CURRENT_MODE:INTERMISSION> {
+
     return 1;
 }
 
