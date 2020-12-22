@@ -22,7 +22,12 @@
 
 // --- Include Modules --- //
 // - Game - //
+#include "game/mode.p"
 #include "game/classes.p"
+// - Modes - //
+#include "game/modes/intermission.p"
+#include "game/modes/break-in.p"
+#include "game/modes/break-out.p"
 // - Tools - //
 #include "tools/coordSaver.p"
 #include "tools/classSwitcher.p"
@@ -32,6 +37,8 @@ main() {}
 public OnGameModeInit() {
 
     // ----- TEMP TEST CODE START ----- //
+
+    LoadMode(MODE_BREAK_IN);
 
     new class_Army = AddClass(287, 213.693, 1902.717, 17.640, 5.548); // ARMY
     SetClassWeapon(class_Army, WEAPON_M4, 300);
