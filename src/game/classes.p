@@ -2,15 +2,6 @@
 // classes.p
 //
 
-/**
-    TODO:
-        Implement the game mechanics behind class selection
-        > Create temporary classes to interact with the game
-        > Update the skin of the temporary classes for the player when they request a 
-            different class
-        > Set the rest of the data (position, interior, world, etc) after the player spawns
- */
-
 #if defined _classes_included
     #endinput
 #endif
@@ -37,6 +28,8 @@ enum eClass {
 };
 
 static gClassData[MAX_CLASSES][eClass];
+static gLastPlayerClass[MAX_PLAYERS] = { -1, ... };
+static gPlayerClassIter[MAX_PLAYERS] = { -1, ... };
 
 stock AddClass(skin, Float: x, Float: y, Float: z, Float: a) {
     
@@ -111,3 +104,143 @@ static stock GetEmptySlot() {
     }
     return -1;
 }
+
+static stock GetFirstClass() {
+    for(new i = 0; i < MAX_CLASSES; i++) {
+        if(gClassData[i][eClass_Created]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+static stock GetLastClass() {
+    for(new i = MAX_CLASSES - 1; i >= 0; i--) {
+        if(gClassData[i][eClass_Created]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+static stock GetNextClass(iter) {
+    for(new i = iter + 1; i < MAX_CLASSES; i++) {
+        if(gClassData[i][eClass_Created]) {
+            return i;
+        }
+    }
+    return GetFirstClass();
+}
+
+static stock GetPreviousClass(iter) {
+    for(new i = iter - 1; i >= 0; i--) {
+        if(gClassData[i][eClass_Created]) {
+            return i;
+        }
+    }
+    return GetLastClass();
+}
+
+static stock UpdateClassDisplay(playerid) {
+    printf("Iter: %i, SkinID: %i", gPlayerClassIter[playerid], gClassData[gPlayerClassIter[playerid]][eClass_Skin]);
+    SetPlayerSkin(playerid, gClassData[gPlayerClassIter[playerid]][eClass_Skin]);
+}
+
+public OnGameModeInit() {
+    AddPlayerClass(0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0);
+    AddPlayerClass(0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0);
+    AddPlayerClass(0, 0.00, 0.00, 0.00, 0.00, 0, 0, 0, 0, 0, 0);
+    return CallLocalFunction("class_OnGameModeInit", "", "");
+}
+
+#if defined _ALS_OnGameModeInit
+	#undef OnGameModeInit
+#else
+	#define _ALS_OnGameModeInit
+#endif
+#define OnGameModeInit class_OnGameModeInit
+forward class_OnGameModeInit();
+
+public OnPlayerRequestClass(playerid, classid) {
+
+    enum { MOVE_NONE, MOVE_RIGHT, MOVE_LEFT };
+    new move;
+    // detect move; if any
+    switch(gLastPlayerClass[playerid]) {
+        case 0: {
+            if(classid == 1) {
+                move = MOVE_RIGHT;
+            } else if(classid == 2) { 
+                move = MOVE_LEFT;
+            }
+        }
+        case 1: {
+            if(classid == 2) {
+                move = MOVE_RIGHT;
+            } else if(classid == 0) {
+                move = MOVE_LEFT;
+            }
+        }
+        case 2: { 
+            if(classid == 0) {
+                move = MOVE_RIGHT;
+            } else if(classid == 1) {
+                move = MOVE_LEFT;
+            }
+        }
+        case -1: {
+            move = MOVE_NONE;
+        }
+    }
+
+    switch(move) {
+        case MOVE_RIGHT: gPlayerClassIter[playerid] = GetNextClass(gPlayerClassIter[playerid]);
+        case MOVE_LEFT: gPlayerClassIter[playerid] = GetPreviousClass(gPlayerClassIter[playerid]);
+        case MOVE_NONE: gPlayerClassIter[playerid] = GetFirstClass();
+    }
+
+    if(gPlayerClassIter[playerid] != -1) {
+        UpdateClassDisplay(playerid);
+    }
+
+    gLastPlayerClass[playerid] = classid;
+    return CallLocalFunction("class_OnPlayerRequestClass", "ii", playerid, classid);
+}
+
+#if defined _ALS_OnPlayerRequestClass
+	#undef OnPlayerRequestClass
+#else
+	#define _ALS_OnPlayerRequestClass
+#endif
+#define OnPlayerRequestClass class_OnPlayerRequestClass
+forward class_OnPlayerRequestClass(playerid, classid);
+
+public OnPlayerSpawn(playerid) {
+
+    if(gPlayerClassIter[playerid] != -1) {
+        SetPlayerPos(playerid, 
+            gClassData[gPlayerClassIter[playerid]][eClass_X],
+            gClassData[gPlayerClassIter[playerid]][eClass_Y],
+            gClassData[gPlayerClassIter[playerid]][eClass_Z]
+        );
+        SetPlayerFacingAngle(playerid, gClassData[gPlayerClassIter[playerid]][eClass_A]);
+        SetPlayerInterior(playerid, gClassData[gPlayerClassIter[playerid]][eClass_Interior]);
+        SetPlayerVirtualWorld(playerid, gClassData[gPlayerClassIter[playerid]][eClass_World]);
+    }
+    return 1;
+}
+
+public OnPlayerDisconnect(playerid, reason) {
+
+    gPlayerClassIter[playerid] = -1;
+    gLastPlayerClass[playerid] = -1;
+    return CallLocalFunction("class_OnPlayerDisconnect", "ii", playerid, reason);
+}
+
+#if defined _ALS_OnPlayerDisconnect
+	#undef OnPlayerDisconnect
+#else
+	#define _ALS_OnPlayerDisconnect
+#endif
+#define OnPlayerDisconnect class_OnPlayerDisconnect
+forward class_OnPlayerDisconnect(playerid, reason);

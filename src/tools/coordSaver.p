@@ -34,6 +34,7 @@ COMMAND:savepos(playerid, params[]) {
         strcat(buffer, "\r\n");
         fwrite(hFile, buffer);
         fclose(hFile);
+        SendClientMessage(playerid, 0x00FF00FF, "Position saved.");
     }
     return 1;
 }
