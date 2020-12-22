@@ -12,7 +12,8 @@ static const gModeList[] = {
     "Break-Out"
 };
 
-forward OnModeLoaded();
+forward OnModeInit();
+forward OnModeExit();
 
 LoadMode(modeid) {
 
@@ -31,5 +32,5 @@ LoadMode(modeid) {
             state CURRENT_MODE:INTERMISSION;
     }
 
-    CallLocalFunction("OnModeLoaded", "", "");
+    CallLocalFunction("OnModeInit", "", "");
 }

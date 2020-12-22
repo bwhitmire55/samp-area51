@@ -2,6 +2,14 @@
 // break-out.p
 //
 
-public OnModeLoaded() <CURRENT_MODE:BREAK_OUT> {
+public OnModeInit() <CURRENT_MODE:BREAK_OUT> {
+    return 1;
+}
+
+public OnModeExit() <CURRENT_MODE:BREAK_OUT> {
+    return 1;
+}
+
+public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:BREAK_OUT> {
     return 1;
 }

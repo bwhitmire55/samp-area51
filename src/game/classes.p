@@ -103,7 +103,7 @@ stock DeleteClass(id) {
         gClassData[id][eClass_Y] = 0.0;
         gClassData[id][eClass_Z] = 0.0;
         gClassData[id][eClass_A] = 0.0;
-        gClassData[id][eClass_Team] = TEAM_NONE;
+        gClassData[id][eClass_Team] = NO_TEAM;
         gClassData[id][eClass_Interior] = 0;
         gClassData[id][eClass_World] = 0;
 
