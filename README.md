@@ -36,11 +36,15 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 
 * Two base gamemodes (Break-In and Break-Out)
 * Users account system
-* Player Rank system; progressing through the ranks will be access to various capabilities in-game
+* Player Rank system; progressing through the ranks will grant access to various capabilities in-game
 * Achievement system
 * Administrator system
 * Team-balancing system
 * Anti-Cheat System
+* Common
+    * Connect/Disconnect Messages
+    * Random Messages
+    * Default Team Chat
 
 ## Classes
 
@@ -105,6 +109,8 @@ Fill
 
 * /help
 * /rules
+* /a(ll) [message]
+* /pm [id] [message]
 * /register [password]
 * /login [password]
 * /stats [(opt)id]
@@ -114,6 +120,7 @@ Fill
 ## Dependencies
 
 ZCMD (ZeeX)
+sscanf (Y_Less)
 samp-account (Bakr)
 
 ## Todo

@@ -137,6 +137,12 @@ public OnPlayerSpawn(playerid) <CURRENT_MODE:BREAK_IN> {
     } else {
         gPlayerCPStatus[playerid] = CP_NONE;
     }
+
+    if(GetClassTeam(class) == TEAM_ATTACK) {
+        SetPlayerColor(playerid, 0xFF0000FF);
+    } else if(GetClassTeam(class) == TEAM_DEFENSE) {
+        SetPlayerColor(playerid, 0x00FF00FF);
+    }
     return 1;
 }
 

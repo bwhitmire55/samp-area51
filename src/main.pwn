@@ -11,6 +11,10 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS     (30)
 
+// 3rd party libraries
+#include <sscanf2>
+#include <zcmd>
+
 // toggle dev environment (enable tools and tests)
 #define DEV_ENVIRONMENT
 
@@ -21,16 +25,18 @@
 #define SERVER_WEBURL           "www.sa-mp.com"
 
 // --- Include Modules --- //
+// - Util - //
+#include "misc/util.p"
 // - Game - //
 #include "game/mode.p"
 #include "game/classes.p"
+#include "game/gen_cmds.p"
 // - Modes - //
 #include "game/modes/intermission.p"
 #include "game/modes/break-in.p"
 #include "game/modes/break-out.p"
 // - Tools - //
 #include "tools/coordSaver.p"
-#include "tools/classSwitcher.p"
 // - Tests - //
 #include "tests/_classes.p"
 

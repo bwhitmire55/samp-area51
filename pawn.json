@@ -5,13 +5,17 @@
 	"output": "gamemodes/main.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib",
-		"Southclaws/zcmd"
+		"Southclaws/zcmd",
+		"https://github.com/maddinat0r/sscanf:v2.8.2"
 	],
 	"local": true,
 	"runtime": {
 		"version": "0.3.7",
 		"mode": "server",
 		"rcon_password": "password",
-		"port": 7777
+		"port": 7777,
+		"hostname": "SA-MP Server",
+		"maxplayers": 50,
+		"language": ""
 	}
 }

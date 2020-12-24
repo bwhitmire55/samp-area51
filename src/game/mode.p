@@ -49,6 +49,8 @@ EndMode(bool: isIntermission = false) {
         TogglePlayerSpectating(i, true);
         ForceClassSelection(i);
         TogglePlayerSpectating(i, false);
+
+        SetPlayerColor(i, 0x707070FF);
     }
 
     // delay load mode so the caller of this function can properly return
