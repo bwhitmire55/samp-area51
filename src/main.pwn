@@ -34,13 +34,13 @@
 // - Tests - //
 #include "tests/_classes.p"
 
-main() {}
+main() { }
 
 public OnGameModeInit() {
 
     // ----- TEMP TEST CODE START ----- //
 
-    LoadMode(MODE_BREAK_IN);
+
 
     // ----- TEMP TEST CODE END ----- //
 
@@ -59,5 +59,8 @@ public OnGameModeInit() {
     #if defined DEV_ENVIRONMENT
         SendRconCommand("loadfs fsdebug");
     #endif
+
+    // start the game
+    LoadMode(MODE_BREAK_IN);
     return 1;
 }

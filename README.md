@@ -35,6 +35,7 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 ## Features
 
 * Two base gamemodes (Break-In and Break-Out)
+* Users account system
 * Player Rank system; progressing through the ranks will be access to various capabilities in-game
 * Achievement system
 * Administrator system
@@ -53,6 +54,14 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
     * Pyromaniac [M4, Spaz Shotgun, Flamethrower]
     * Sniper [Sniper Rifle, Silenced Pistol, Knife]
     * Medic [Shotgun, Colt45, Fire Extinguisher]
+
+## User Account System
+
+* Username
+* Password
+* Registered IP-Address
+* Kills
+* Deaths
 
 ## Ranks
 
@@ -105,9 +114,16 @@ Fill
 ## Dependencies
 
 ZCMD (ZeeX)
+samp-account (Bakr)
 
 ## Todo
+
+-> Test mode-switching system
 
 -> Re-work the dev environment setting. Tools and tests should be independent of one another
 
 -> Tests should have a core module which regulates how they operate (i.e. printing to file)
+
+## Notes
+
+-> Gamemodes should be included into the main file after other modules have hooked their callbacks. This will prevent a symbol redefinition error for callbacks which use different states.
