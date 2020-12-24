@@ -62,10 +62,37 @@ stock SetClassInterior(id, interior) {
     }
 }
 
+stock GetClassInterior(id) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+        return gClassData[id][eClass_Interior];
+    }
+    return -1;
+}
+
 stock SetClassWorld(id, world) {
     if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
         gClassData[id][eClass_World] = world;
     }
+}
+
+stock GetClassWorld(id) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+        return gClassData[id][eClass_World];
+    }
+    return -1;
+}
+
+stock SetClassTeam(id, team) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+        gClassData[id][eClass_Team] = team;
+    }
+}
+
+stock GetClassTeam(id) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+        return gClassData[id][eClass_Team];
+    }
+    return NO_TEAM;
 }
 
 stock SetClassPosition(id, Float: x, Float: y, Float: z, Float: a) {
@@ -77,10 +104,15 @@ stock SetClassPosition(id, Float: x, Float: y, Float: z, Float: a) {
     }
 }
 
-stock SetClassTeam(id, teamid) {
+stock GetClassPosition(id, &Float: x, &Float: y, &Float: z, &Float: a) {
     if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
-        gClassData[id][eClass_Team] = teamid;
+        x = gClassData[id][eClass_X];
+        y = gClassData[id][eClass_Y];
+        z = gClassData[id][eClass_Z];
+        a = gClassData[id][eClass_A];
+        return 1;
     }
+    return 0;
 }
 
 stock SetClassWeapon(id, weapon, ammo) {
@@ -93,6 +125,25 @@ stock SetClassWeapon(id, weapon, ammo) {
             }
         }
     }
+}
+
+stock GetClassWeapons(id, weapon[MAX_CLASS_WEAPONS], ammo[MAX_CLASS_WEAPONS], count = MAX_CLASS_WEAPONS) {
+    if((0 <= id < MAX_CLASSES) && gClassData[id][eClass_Created] == true) {
+        if(count <= MAX_CLASS_WEAPONS) {
+            for(new i = 0; i < count; i++) {
+                weapon[i] = gClassData[id][eClass_Weapon][i];
+                ammo[i] = gClassData[id][eClass_Ammo][i];
+            }
+        }
+    }
+}
+
+stock GetPlayerClassID(playerid) {
+    return gPlayerClassIter[playerid];
+}
+
+stock SetPlayerClassID(playerid, classid) {
+    gPlayerClassIter[playerid] = classid;
 }
 
 stock DeleteClass(id) {
@@ -112,14 +163,6 @@ stock DeleteClass(id) {
             gClassData[i][eClass_Ammo][i] = 0;
         }
     }
-}
-
-stock GetPlayerClassID(playerid) {
-    return gPlayerClassIter[playerid];
-}
-
-stock SetPlayerClassID(playerid, classid) {
-    gPlayerClassIter[playerid] = classid;
 }
 
 static stock GetEmptySlot() {
