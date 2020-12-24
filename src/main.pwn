@@ -11,7 +11,7 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS     (30)
 
-// toggle dev environment
+// toggle dev environment (enable tools and tests)
 #define DEV_ENVIRONMENT
 
 // client rules
@@ -31,6 +31,8 @@
 // - Tools - //
 #include "tools/coordSaver.p"
 #include "tools/classSwitcher.p"
+// - Tests - //
+#include "tests/_classes.p"
 
 main() {}
 
