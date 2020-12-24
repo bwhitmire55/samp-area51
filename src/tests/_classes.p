@@ -10,13 +10,12 @@
 
 public OnGameModeInit() {
 
-    print("-------------------------------------------------");
-    print("- Running tests for classes.p                   -");
+    print("\n\n\n-------------------------------------------------");
+    print("- Running tests for classes.p");
     print("--------------------------------");
 
     new i;
 
-    // creation (limits)
     new testClass = AddClass(5, 1.00, 2.00, 3.00, 4.00);
 
     // interior
@@ -62,9 +61,21 @@ public OnGameModeInit() {
         i++;
     }
 
+    // class limits
+    for(i = 1; i < MAX_CLASSES; i++) {
+        AddClass(1, 0.00, 1.00, 2.00, 3.00);
+    }
+
+    printf("- Class Overflow: %i | Expected: %i", AddClass(2, 0.00, 0.00, 0.00, 0.00), -1);
+
+    // CLEANUP
+    for(i = 0; i < MAX_CLASSES; i++) {
+        DeleteClass(i);
+    }
+
     print("--------------------------------");
-    print("- Completed tests for classes.p                   -");
-    print("-------------------------------------------------");
+    print("- Completed tests for classes.p");
+    print("-------------------------------------------------\n\n\n");
     return CallLocalFunction("_class_OnGameModeInit", "", "");
 }
 

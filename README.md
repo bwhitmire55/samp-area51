@@ -39,7 +39,6 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 * Achievement system
 * Administrator system
 * Team-balancing system
-* Anti C-Bug System
 * Anti-Cheat System
 
 ## Classes
@@ -62,6 +61,53 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 * Rank 3 [x kills] -> 
 * Rank 4 [x kills] -> Drive the Seasparrow or Hydra
 
+## Achievements
+
+Fill
+
+## Administrator System
+
+* Level 1
+    * /spec [id]
+    * /unspec
+    * /slap [id]
+    * /warn [id] [reason]
+    * /kick [id] [reason]
+* Level 2
+    * /ban [id] [reason]
+    * /goto [id]
+    * /get [id]
+* Level 3
+    * /(an)nounce [message]
+    * /makeadmin [id] [level]
+
+## Team-Balance System
+
+Fill
+
+## Anti-Cheat System
+
+* Anti C-Bug
+* Anti Money Hack
+* Gameplay-based systems
+    * Entering an objective when otherwise impossible (Breaking-In before gate has been breached)
+
+## General Commands
+
+* /help
+* /rules
+* /register [password]
+* /login [password]
+* /stats [(opt)id]
+* /kill
+* /class
+
 ## Dependencies
 
 ZCMD (ZeeX)
+
+## Todo
+
+-> Re-work the dev environment setting. Tools and tests should be independent of one another
+
+-> Tests should have a core module which regulates how they operate (i.e. printing to file)
