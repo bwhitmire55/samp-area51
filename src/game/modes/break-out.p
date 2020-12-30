@@ -10,6 +10,11 @@ public OnModeExit() <CURRENT_MODE:BREAK_OUT> {
     return 1;
 }
 
+public OnModeTimeExpire() <CURRENT_MODE:BREAK_OUT> {
+    EndMode();
+    return 1;
+}
+
 public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:BREAK_OUT> {
     return 1;
 }

@@ -29,6 +29,7 @@
 #include "misc/util.p"
 // - Game - //
 #include "game/mode.p"
+#include "game/modetimer.p"
 #include "game/classes.p"
 #include "game/gen_cmds.p"
 // - Modes - //

@@ -11,6 +11,11 @@ public OnModeExit() <CURRENT_MODE:INTERMISSION> {
     return 1;
 }
 
+public OnModeTimeExpire() <CURRENT_MODE:INTERMISSION> {
+    EndMode();
+    return 1;
+}
+
 public OnPlayerRequestClass(playerid, classid) <CURRENT_MODE:INTERMISSION> {
     return 1;
 }

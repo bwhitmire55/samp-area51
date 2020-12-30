@@ -4,7 +4,6 @@
 
 /**
     TO-DO:
-        -> Add mode-timer, along with default win for defenders
         -> Add gate with gate-breaching code
         -> Add barriers to block the entrance through the vents
         -> Display messages for break-ins, and a totals counter
@@ -92,6 +91,9 @@ public OnModeInit() <CURRENT_MODE:BREAK_IN> {
     CreateVehicle(471,-393.909,2211.426,41.907,278.429,-1,-1, -1); // quad
     CreateVehicle(573,319.675,2537.472,17.460,178.661,-1,-1, -1); // duneride
     CreateVehicle(573,351.693,2546.871,17.329,216.157,-1,-1, -1); // duneride
+
+    // initialize timer
+    SetModeTime(1);
     return 1;
 }
 
@@ -112,6 +114,11 @@ public OnModeExit() <CURRENT_MODE:BREAK_IN> {
     }
 
     gBreakInCounter = 0;
+    return 1;
+}
+
+public OnModeTimeExpire() <CURRENT_MODE:BREAK_IN> {
+    EndMode();
     return 1;
 }
 

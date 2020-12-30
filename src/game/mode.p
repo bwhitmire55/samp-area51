@@ -6,7 +6,7 @@
 #define MODE_BREAK_IN           (1)
 #define MODE_BREAK_OUT          (2)
 
-static const gModeList[] = {
+static const gModeList[][] = {
     "Intermission",
     "Break-In",
     "Break-Out"
