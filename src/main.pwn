@@ -34,6 +34,8 @@
 #include "game/modetimer.p"
 #include "game/classes.p"
 #include "game/gen_cmds.p"
+// - World - //
+#include "game/world/weather.p"
 // - Modes - //
 #include "game/modes/intermission.p"
 #include "game/modes/break-in.p"
