@@ -93,7 +93,7 @@ public OnModeInit() <CURRENT_MODE:BREAK_IN> {
     CreateVehicle(573,351.693,2546.871,17.329,216.157,-1,-1, -1); // duneride
 
     // initialize timer
-    SetModeTime(1);
+    SetModeTime(10);
     return 1;
 }
 
