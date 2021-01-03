@@ -3,6 +3,9 @@
 //
 
 public OnModeInit() <CURRENT_MODE:BREAK_OUT> {
+
+    // initialize timer
+    SetModeTime(10);
     return 1;
 }
 

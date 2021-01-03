@@ -15,8 +15,10 @@
 #include <sscanf2>
 #include <zcmd>
 
-// toggle dev environment (enable tools and tests)
+// toggle dev environment (tools, FS's)
 #define DEV_ENVIRONMENT
+// toggle dev module tests
+//#define DEV_RUN_TESTS
 
 // client rules
 #define SERVER_HOSTNAME         "The Area 51 Server"

@@ -43,16 +43,6 @@ LoadMode(modeid) {
 EndMode(bool: isIntermission = false) {
     CallLocalFunction("OnModeExit", "", "");
 
-    // Respawn all players to class selection so the next mode
-    // can handle them properly
-    for(new i = 0; i < MAX_PLAYERS; i++) {
-        TogglePlayerSpectating(i, true);
-        ForceClassSelection(i);
-        TogglePlayerSpectating(i, false);
-
-        SetPlayerColor(i, 0x707070FF);
-    }
-
     // delay load mode so the caller of this function can properly return
     if(!isIntermission)
         SetTimerEx("DelayLoadMode", 100, false, "i", MODE_INTERMISSION);
@@ -68,5 +58,23 @@ EndMode(bool: isIntermission = false) {
 forward DelayLoadMode(modeid);
 public DelayLoadMode(modeid) {
     LoadMode(modeid);
+
+    // handle players
+    for(new i = 0; i < MAX_PLAYERS; i++) {
+        if(IsPlayerConnected(i)) {
+            // Reset script data
+            SetPlayerClassID(i, -1);
+
+            // Reset game data
+            SetPlayerColor(i, 0x707070FF);
+            DisablePlayerCheckpoint(i);
+
+            // Respawn
+            TogglePlayerSpectating(i, true);
+            PlayerSpectatePlayer(i, INVALID_PLAYER_ID);
+            ForceClassSelection(i);
+            TogglePlayerSpectating(i, false);
+        }
+    }
     return 1;
 }

@@ -20,6 +20,7 @@ public UpdateTimer() {
     TextDrawSetString(gTimerTextdraw, buffer);
 
     if(gTimeLeft == 0) {
+        TextDrawHideForAll(gTimerTextdraw);
         KillTimer(gModeTimer);
         CallLocalFunction("OnModeTimeExpire", "", "");
     }
@@ -51,8 +52,9 @@ public OnGameModeInit() {
 forward modet_OnGameModeInit();
 
 public OnPlayerSpawn(playerid) {
-
-    TextDrawShowForPlayer(playerid, gTimerTextdraw);
+    if(gTimeLeft != 0) {
+        TextDrawShowForPlayer(playerid, gTimerTextdraw);
+    }
     return CallLocalFunction("modet_OnPlayerSpawn", "i", playerid);
 }
 

@@ -4,7 +4,7 @@
 //      Test module (classes.p) 
 //
 
-#if !defined DEV_ENVIRONMENT
+#if !defined DEV_RUN_TESTS
     #endinput
 #endif
 

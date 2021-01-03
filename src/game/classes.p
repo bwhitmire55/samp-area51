@@ -159,8 +159,8 @@ stock DeleteClass(id) {
         gClassData[id][eClass_World] = 0;
 
         for(new i = 0; i < MAX_CLASS_WEAPONS; i++) {
-            gClassData[i][eClass_Weapon][i] = 0;
-            gClassData[i][eClass_Ammo][i] = 0;
+            gClassData[id][eClass_Weapon][i] = 0;
+            gClassData[id][eClass_Ammo][i] = 0;
         }
     }
 }
