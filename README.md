@@ -36,6 +36,9 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 
 * Two base gamemodes (Break-In and Break-Out)
 * Users account system
+    * Password length restraints
+    * Incorrect password attempts results in a kick
+    * Auto-login based on registration IP
 * Player Rank system; progressing through the ranks will grant access to various capabilities in-game
 * Achievement system
 * Administrator system
