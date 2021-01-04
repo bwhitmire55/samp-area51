@@ -33,6 +33,22 @@ public OnPlayerDisconnect(playerid, reason) {
 #define OnPlayerDisconnect profile_OnPlayerDisconnect
 forward profile_OnPlayerDisconnect(playerid, reason);
 
+public OnPlayerRequestSpawn(playerid) {
+    if(GetPlayerUID(playerid) != 0 && !IsPlayerLoggedIn(playerid)) {
+        SendClientMessage(playerid, 0xFFFFFFFF, "{FF0000}Error: {FFFFFF}This username is registered. Please login to spawn.");
+        return 0;
+    }
+    return CallLocalFunction("profile_OnPlayerRequestSpawn", "i", playerid);
+}
+
+#if defined _ALS_OnPlayerRequestSpawn
+    #undef OnPlayerRequestSpawn
+#else
+    #define _ALS_OnPlayerRequestSpawn
+#endif 
+#define OnPlayerRequestSpawn profile_OnPlayerRequestSpawn
+forward profile_OnPlayerRequestSpawn(playerid);
+
 public OnPlayerDeath(playerid, killerid, reason) {
     gPlayerDeaths[playerid]++;
 
