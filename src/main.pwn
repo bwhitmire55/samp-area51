@@ -15,6 +15,13 @@
 #include <sscanf2>
 #include <zcmd>
 
+// edited 3rd party libraries
+#define ACCOUNT_DATABASE        "area51.db"
+#define ACCOUNT_DATABASE_TABLE  "users"
+#define ACCOUNT_MAX_COLUMN_NAME (30)
+#define ACCOUNT_MAX_COLUMNS     (50)
+#include "inc/account.inc"
+
 // toggle dev environment (tools, FS's)
 #define DEV_ENVIRONMENT
 // toggle dev module tests

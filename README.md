@@ -121,7 +121,8 @@ Fill
 
 ZCMD (ZeeX)
 sscanf (Y_Less)
-samp-account (Bakr)
+pointer (Slice)
+Whirlpool (Y_Less)
 
 ## Todo
 
