@@ -25,7 +25,7 @@ COMMAND:pm(playerid, params[]) {
 
 COMMAND:all(playerid, params[]) {
     new buffer[128];
-    if(!strlen(params)) {
+    if(isnull(params)) {
         return SendClientMessage(playerid, 0xFFFFFFFF, "{FF0000}Usage: {FFFFFF}/a(ll) <message>");
     } else {
         format(buffer, sizeof(buffer), "{707070}[ALL]%s: {FFFFFF}%s", ReturnPlayerName(playerid), params);

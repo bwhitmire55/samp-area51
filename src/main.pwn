@@ -40,7 +40,9 @@
 #include "game/mode.p"
 #include "game/modetimer.p"
 #include "game/classes.p"
+#include "game/profile.p"
 #include "game/gen_cmds.p"
+#include "game/acc_cmds.p"
 // - World - //
 #include "game/world/weather.p"
 // - Modes - //
