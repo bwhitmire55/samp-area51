@@ -41,6 +41,7 @@
 #include "game/modetimer.p"
 #include "game/classes.p"
 #include "game/profile.p"
+#include "game/rank.p"
 #include "game/gen_cmds.p"
 #include "game/acc_cmds.p"
 // - World - //

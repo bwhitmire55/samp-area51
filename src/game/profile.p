@@ -38,9 +38,10 @@ public OnPlayerRequestSpawn(playerid) {
         SendClientMessage(playerid, 0xFFFFFFFF, "{FF0000}Error: {FFFFFF}This username is registered. Please login to spawn.");
         return 0;
     }
-    return CallLocalFunction("profile_OnPlayerRequestSpawn", "i", playerid);
+    //return CallLocalFunction("profile_OnPlayerRequestSpawn", "i", playerid);
+    return 1;
 }
-
+/*
 #if defined _ALS_OnPlayerRequestSpawn
     #undef OnPlayerRequestSpawn
 #else
@@ -48,7 +49,7 @@ public OnPlayerRequestSpawn(playerid) {
 #endif 
 #define OnPlayerRequestSpawn profile_OnPlayerRequestSpawn
 forward profile_OnPlayerRequestSpawn(playerid);
-
+*/
 public OnPlayerDeath(playerid, killerid, reason) {
     gPlayerDeaths[playerid]++;
 

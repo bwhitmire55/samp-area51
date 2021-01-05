@@ -72,7 +72,7 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 
 ## Ranks
 
-* Rank 1 [x kills] -> 
+* Rank 1 [x kills] -> CCTV cameras for defenders
 * Rank 2 [x kills] ->
 * Rank 3 [x kills] -> 
 * Rank 4 [x kills] -> Drive the Seasparrow or Hydra
@@ -128,12 +128,6 @@ pointer (Slice)
 Whirlpool (Y_Less)
 
 ## Todo
-
--> Test mode-switching system
-
--> Re-work the dev environment setting. Tools and tests should be independent of one another
-
--> Tests should have a core module which regulates how they operate (i.e. printing to file)
 
 ## Notes
 
