@@ -46,6 +46,8 @@
 #include "game/acc_cmds.p"
 // - World - //
 #include "game/world/weather.p"
+// - Ranks - //
+#include "game/ranks/pilot.p"
 // - Modes - //
 #include "game/modes/intermission.p"
 #include "game/modes/break-in.p"
