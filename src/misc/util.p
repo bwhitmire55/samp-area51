@@ -8,6 +8,14 @@ ReturnPlayerName(playerid) {
     return name;
 }
 
+GetXYInFrontOfPlayer(playerid, Float: distance, &Float: x, &Float: y) {
+    new Float: a;
+    GetPlayerPos(playerid, x, y, a);
+    GetPlayerFacingAngle(playerid, a);
+    x += distance * floatsin(-a, degrees);
+    y += distance * floatcos(-a, degrees);
+}
+
 DelayKick(playerid, const kicker[], const reason[]) {
     new buffer[128];
     format(buffer, sizeof(buffer), "{FFFF00}[KICK] {FFFFFF}%s has been kicked by %s. Reason: %s", 

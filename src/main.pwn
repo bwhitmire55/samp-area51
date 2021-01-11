@@ -42,8 +42,10 @@
 #include "game/classes.p"
 #include "game/profile.p"
 #include "game/rank.p"
+#include "game/admin.p"
 #include "game/gen_cmds.p"
 #include "game/acc_cmds.p"
+#include "game/adm_cmds.p"
 // - World - //
 #include "game/world/weather.p"
 // - Ranks - //

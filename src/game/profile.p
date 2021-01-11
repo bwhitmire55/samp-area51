@@ -5,6 +5,24 @@
 static gPlayerKills[MAX_PLAYERS];
 static gPlayerDeaths[MAX_PLAYERS];
 
+static gPlayerWarnings[MAX_PLAYERS];
+
+stock GetPlayerKills(playerid) {
+    return gPlayerKills[playerid];
+}
+
+stock GetPlayerDeaths(playerid) {
+    return gPlayerDeaths[playerid];
+}
+
+stock SetPlayerWarnings(playerid, count) {
+    gPlayerWarnings[playerid] = count;
+}
+
+stock GetPlayerWarnings(playerid) {
+    return gPlayerWarnings[playerid];
+}
+
 public OnGameModeInit() {
     AddAccountData("kills", TYPE_INT, gPlayerKills);
     AddAccountData("deaths", TYPE_INT, gPlayerDeaths);
@@ -22,6 +40,8 @@ forward profile_OnGameModeInit();
 public OnPlayerDisconnect(playerid, reason) {
     gPlayerKills[playerid] = 0;
     gPlayerDeaths[playerid] = 0;
+
+    gPlayerWarnings[playerid] = 0;
     return CallLocalFunction("profile_OnPlayerDisconnect", "ii", playerid, reason);
 }
 
