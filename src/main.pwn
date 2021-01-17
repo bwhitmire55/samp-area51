@@ -42,6 +42,7 @@
 #include "game/classes.p"
 #include "game/profile.p"
 #include "game/rank.p"
+#include "game/team_chat.p"
 #include "game/admin.p"
 #include "game/gen_cmds.p"
 #include "game/acc_cmds.p"
