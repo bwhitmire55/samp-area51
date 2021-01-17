@@ -83,6 +83,8 @@ Fill
 
 ## Administrator System
 
+* Admin chat with specifier '@'
+
 * Level 1
     * /spec [id]
     * /unspec

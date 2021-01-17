@@ -46,6 +46,7 @@
 #include "game/gen_cmds.p"
 #include "game/acc_cmds.p"
 #include "game/adm_cmds.p"
+#include "game/connect_msgs.p"
 // - World - //
 #include "game/world/weather.p"
 // - Ranks - //
