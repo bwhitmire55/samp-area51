@@ -40,14 +40,17 @@
 #include "game/mode.p"
 #include "game/modetimer.p"
 #include "game/classes.p"
-#include "game/profile.p"
 #include "game/rank.p"
-#include "game/team_chat.p"
-#include "game/admin.p"
-#include "game/gen_cmds.p"
-#include "game/acc_cmds.p"
-#include "game/adm_cmds.p"
-#include "game/connect_msgs.p"
+// - General - //
+#include "game/gen/connect_msgs.p"
+#include "game/gen/team_chat.p"
+// - Player - //
+#include "game/player/profile.p"
+#include "game/player/acc_cmds.p"
+#include "game/player/gen_cmds.p"
+// - Admin - //
+#include "game/player/admin/admin.p"
+#include "game/player/admin/adm_cmds.p"
 // - World - //
 #include "game/world/weather.p"
 // - Ranks - //

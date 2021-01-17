@@ -28,7 +28,7 @@ Happy Pawning!
 
 ## samp-area51
 
-samp-area51 is a replica of the once very popular 'The Area 51 Server'. Once a part of the Official Server List, the premise of the server was simple; a standard TDM script where Area 51 base personnel try to prevent a group of individual from entering the base. This remake will focus on replicating the core mechanics of the original gamemode script, while flushing out some of the lesser touched parts. These would include a more objective style play, or potentially a story, to make better sense of the surrounding madness; updated visual asthetics for a more soothing appearance; and extending base systems found commonly among all gamemode server scripts.
+samp-area51 is a replica of the once very popular 'The Area 51 Server'. Once a part of the Official Server List, the premise of the server was simple; a standard TDM script where Area 51 base personnel try to prevent a group of individuals from entering the base. This remake will focus on replicating the core mechanics of the original gamemode script, while flushing out some of the lesser touched parts. These would include a more objective style play, or potentially a story, to make better sense of the surrounding madness; updated visual asthetics for a more soothing appearance; and extending base systems found commonly among all gamemode server scripts.
 
 Base idea credits, and the original authors of the script, go to [RP]Jolteon/Redirect_Left and [RP]Ettans. 
 
