@@ -11,30 +11,33 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS     (30)
 
+// client rules
+#define SERVER_HOSTNAME         "The Area 51 Server"
+#define SERVER_GAMEMODE         "Default"
+#define SERVER_MAPNAME          "San Andreas"
+#define SERVER_WEBURL           "www.sa-mp.com"
+
+// script constants
+#define SERVER_DATABASE         "area51.db"
+
 // 3rd party libraries
 #include <sscanf2>
 #include <zcmd>
 
 // edited 3rd party libraries
-#define ACCOUNT_DATABASE        "area51.db"
+#define ACCOUNT_DATABASE        SERVER_DATABASE
 #define ACCOUNT_DATABASE_TABLE  "users"
 #define ACCOUNT_MAX_COLUMN_NAME (30)
 #define ACCOUNT_MAX_COLUMNS     (50)
 #include "inc/account.inc"
 
 // internal module set-up
-#define ACHIEVEMENT_DATABASE    "area51.db"
+#define ACHIEVEMENT_DATABASE    SERVER_DATABASE
 
 // toggle dev environment (tools, FS's)
 #define DEV_ENVIRONMENT
 // toggle dev module tests
 //#define DEV_RUN_TESTS
-
-// client rules
-#define SERVER_HOSTNAME         "The Area 51 Server"
-#define SERVER_GAMEMODE         "Default"
-#define SERVER_MAPNAME          "San Andreas"
-#define SERVER_WEBURL           "www.sa-mp.com"
 
 // --- Include Modules --- //
 // - Util - //
@@ -61,6 +64,9 @@
 #include "game/ranks/pilot.p"
 // - Achievements - //
 #include "game/achievements/small_clucker.p"
+#include "game/achievements/big_clucker.p"
+#include "game/achievements/huge_clucker.p"
+#include "game/achievements/grand_master_cluck.p"
 // - Modes - //
 #include "game/modes/intermission.p"
 #include "game/modes/break-in.p"

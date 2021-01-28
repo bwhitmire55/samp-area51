@@ -1,6 +1,5 @@
 //
-// small_clucker.p 
-//  Get 100 kills
+// small_clucker.p
 //
 
 #define ACH_NAME        "Small Clucker"
@@ -31,6 +30,6 @@ public OnPlayerDeath(playerid, killerid, reason) {
     #define _ALS_OnPlayerDeath
 #endif
 #define OnPlayerDeath scluck_OnPlayerDeath
-forward scluck_OnPlayerDeath();
+forward scluck_OnPlayerDeath(playerid, killerid, reason);
 
 #undef ACH_NAME
