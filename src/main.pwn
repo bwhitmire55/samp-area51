@@ -22,6 +22,9 @@
 #define ACCOUNT_MAX_COLUMNS     (50)
 #include "inc/account.inc"
 
+// internal module set-up
+#define ACHIEVEMENT_DATABASE    "area51.db"
+
 // toggle dev environment (tools, FS's)
 #define DEV_ENVIRONMENT
 // toggle dev module tests
@@ -41,6 +44,7 @@
 #include "game/modetimer.p"
 #include "game/classes.p"
 #include "game/rank.p"
+#include "game/achievement.p"
 // - General - //
 #include "game/gen/connect_msgs.p"
 #include "game/gen/team_chat.p"
@@ -55,6 +59,8 @@
 #include "game/world/weather.p"
 // - Ranks - //
 #include "game/ranks/pilot.p"
+// - Achievements - //
+#include "game/achievements/small_clucker.p"
 // - Modes - //
 #include "game/modes/intermission.p"
 #include "game/modes/break-in.p"
