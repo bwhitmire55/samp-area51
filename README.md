@@ -72,14 +72,17 @@ Base idea credits, and the original authors of the script, go to [RP]Jolteon/Red
 
 ## Ranks
 
-* Rank 1 [x kills] -> CCTV cameras for defenders
-* Rank 2 [x kills] ->
-* Rank 3 [x kills] -> 
-* Rank 4 [x kills] -> Drive the Seasparrow or Hydra
+* Hacker [50 kills]     -> CCTV camera access (/cctv [0-4])
+* Rank 2 [250 kills]    -> 
+* Rank 3 [750 kills]    -> 
+* Pilot [1000 kills]    -> Fly the Seasparrow or the Hydra
 
 ## Achievements
 
-Fill
+* Small Clucker         -> Obtain 100 kills
+* Big Clucker           -> Obtain 250 kills
+* Huge Clucker          -> Obtain 500 kills
+* Grand Master Cluck    -> Obtain 1000 kills
 
 ## Administrator System
 

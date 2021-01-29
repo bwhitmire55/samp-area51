@@ -8,11 +8,15 @@ static gPlayerDeaths[MAX_PLAYERS];
 static gPlayerWarnings[MAX_PLAYERS];
 
 stock GetPlayerKills(playerid) {
-    return gPlayerKills[playerid];
+    if(IsPlayerConnected(playerid)) 
+        return gPlayerKills[playerid];
+    return 0;
 }
 
 stock GetPlayerDeaths(playerid) {
-    return gPlayerDeaths[playerid];
+    if(IsPlayerConnected(playerid)) 
+        return gPlayerDeaths[playerid];
+    return 0;
 }
 
 stock SetPlayerWarnings(playerid, count) {
