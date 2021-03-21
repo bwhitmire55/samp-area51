@@ -8,7 +8,8 @@
 		"Southclaws/zcmd",
 		"https://github.com/maddinat0r/sscanf:v2.8.2",
 		"SAMP-git/pointers",
-		"Southclaws/samp-whirlpool"
+		"Southclaws/samp-whirlpool",
+		"bwhitmire55/samp-account"
 	],
 	"local": true,
 	"runtime": {

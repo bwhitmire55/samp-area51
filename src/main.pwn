@@ -29,7 +29,7 @@
 #define ACCOUNT_DATABASE_TABLE  "users"
 #define ACCOUNT_MAX_COLUMN_NAME (30)
 #define ACCOUNT_MAX_COLUMNS     (50)
-#include "inc/account.inc"
+#include <account>
 
 // internal module set-up
 #define ACHIEVEMENT_DATABASE    SERVER_DATABASE

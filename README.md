@@ -127,10 +127,10 @@ Fill
 
 ## Dependencies
 
-ZCMD (ZeeX)
-sscanf (Y_Less)
-pointer (Slice)
-Whirlpool (Y_Less)
+* ZCMD (ZeeX)
+* sscanf (Y_Less)
+* pointer (Slice)
+* Whirlpool (Y_Less)
 
 ## Todo
 
